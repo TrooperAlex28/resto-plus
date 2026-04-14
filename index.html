@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chez Marco - Restaurant</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      body {
+        margin: 0;
+        font-family: "Poppins", sans-serif;
+        background: #0f172a;
+        color: #fff;
+      }
+
+      header {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        background:
+          linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.9)),
+          url("https://images.unsplash.com/photo-1555992336-03a23c4a5d2b");
+        background-size: cover;
+      }
+
+      h1 {
+        font-size: 3rem;
+        margin-bottom: 10px;
+      }
+      p {
+        color: #cbd5e1;
+      }
+
+      .btn {
+        margin-top: 20px;
+        padding: 12px 25px;
+        background: #06b6d4;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 5px;
+      }
+
+      section {
+        padding: 60px 20px;
+        text-align: center;
+      }
+
+      .menu {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        flex-wrap: wrap;
+      }
+
+      .card {
+        background: #1e293b;
+        padding: 20px;
+        border-radius: 10px;
+        width: 250px;
+        text-align: left;
+      }
+
+      .card h3 {
+        margin-top: 0;
+        margin-bottom: 14px;
+      }
+
+      .menu-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .menu-list li {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 8px 0;
+        border-bottom: 1px solid #334155;
+      }
+
+      .menu-list li:last-child {
+        border-bottom: 0;
+      }
+
+      .price {
+        color: #22d3ee;
+        font-weight: 600;
+      }
+
+      footer {
+        background: #020617;
+        padding: 30px;
+        text-align: center;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <h1>Chez Marco</h1>
+      <p>Cuisine italienne moderne à Montréal</p>
+      <a href="#contact" class="btn">Réserver une table</a>
+    </header>
+
+    <section>
+      <h2>Notre menu</h2>
+      <div class="menu">
+        <div class="card">
+          <h3>🍝 Pâtes maison</h3>
+          <ul class="menu-list">
+            <li>
+              <span>Tagliatelles truffe</span><span class="price">22$</span>
+            </li>
+            <li>
+              <span>Rigatoni bolognaise</span><span class="price">19$</span>
+            </li>
+            <li><span>Raviolis ricotta</span><span class="price">20$</span></li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>🍕 Pizza artisanale</h3>
+          <ul class="menu-list">
+            <li><span>Margherita fumee</span><span class="price">18$</span></li>
+            <li><span>Diavola piccante</span><span class="price">21$</span></li>
+            <li>
+              <span>Prosciutto burrata</span><span class="price">23$</span>
+            </li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>🍰 Desserts</h3>
+          <ul class="menu-list">
+            <li>
+              <span>Tiramisu classique</span><span class="price">9$</span>
+            </li>
+            <li>
+              <span>Panna cotta vanille</span><span class="price">8$</span>
+            </li>
+            <li><span>Cannoli chocolat</span><span class="price">10$</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Une expérience unique</h2>
+      <p>Ambiance chaleureuse et cuisine authentique.</p>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <p>📍 Montréal | 📞 514-000-0000</p>
+    </section>
+
+    <footer>
+      <p>© Chez Marco</p>
+    </footer>
+  </body>
+</html>
