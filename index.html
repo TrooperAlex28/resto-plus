@@ -3,166 +3,253 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Chez Marco - Restaurant</title>
-
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap"
-      rel="stylesheet"
-    />
-
+    <title>Chez Marco | Cuisine Italienne Moderne</title>
     <style>
-      body {
+      /* --- RESET & VARIABLES --- */
+      * {
         margin: 0;
-        font-family: "Poppins", sans-serif;
-        background: #0f172a;
-        color: #fff;
-      }
-
-      header {
-        height: 100vh;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        background:
-          linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.9)),
-          url("https://images.unsplash.com/photo-1555992336-03a23c4a5d2b");
-        background-size: cover;
-      }
-
-      h1 {
-        font-size: 3rem;
-        margin-bottom: 10px;
-      }
-      p {
-        color: #cbd5e1;
-      }
-
-      .btn {
-        margin-top: 20px;
-        padding: 12px 25px;
-        background: #06b6d4;
-        color: #fff;
-        text-decoration: none;
-        border-radius: 5px;
-      }
-
-      section {
-        padding: 60px 20px;
-        text-align: center;
-      }
-
-      .menu {
-        display: flex;
-        justify-content: center;
-        gap: 30px;
-        flex-wrap: wrap;
-      }
-
-      .card {
-        background: #1e293b;
-        padding: 20px;
-        border-radius: 10px;
-        width: 250px;
-        text-align: left;
-      }
-
-      .card h3 {
-        margin-top: 0;
-        margin-bottom: 14px;
-      }
-
-      .menu-list {
-        list-style: none;
         padding: 0;
-        margin: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+      :root {
+        --bg-color: #fdfbf7; /* Fond crème chaleureux */
+        --primary: #111111; /* Noir profond pour les textes */
+        --accent: #d35400; /* Orange terre cuite / italie moderne */
+        --text-muted: #666666; /* Gris pour les descriptions */
+        --card-bg: #ffffff;
       }
 
-      .menu-list li {
+      body {
+        background-color: var(--bg-color);
+        color: var(--primary);
+        line-height: 1.6;
+      }
+
+      /* --- HERO SECTION --- */
+      .hero {
+        text-align: center;
+        padding: 100px 20px;
+        background:
+          linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+          url("https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=1200")
+            no-repeat center center/cover;
+        color: white;
+      }
+      .hero h1 {
+        font-size: 3.5rem;
+        margin-bottom: 10px;
+        font-family: "Georgia", serif;
+        letter-spacing: 1px;
+      }
+      .hero p {
+        font-size: 1.3rem;
+        margin-bottom: 30px;
+        font-weight: 300;
+      }
+      .btn {
+        display: inline-block;
+        background-color: var(--accent);
+        color: white;
+        padding: 14px 28px;
+        text-decoration: none;
+        border-radius: 4px;
+        font-weight: bold;
+        transition:
+          transform 0.2s,
+          background-color 0.2s;
+      }
+      .btn:hover {
+        background-color: #b33900;
+        transform: translateY(-2px);
+      }
+
+      /* --- SECTION STRUCTURE --- */
+      .container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 80px 20px;
+      }
+      .section-title {
+        text-align: center;
+        font-size: 2.2rem;
+        margin-bottom: 50px;
+        font-family: "Georgia", serif;
+        position: relative;
+      }
+      .section-title::after {
+        content: "";
+        display: block;
+        width: 50px;
+        height: 2px;
+        background-color: var(--accent);
+        margin: 15px auto 0 auto;
+      }
+
+      /* --- MENU STYLE (PRO) --- */
+      .menu-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 40px;
+        margin-bottom: 40px;
+      }
+      @media (min-width: 768px) {
+        .menu-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+      .menu-category {
+        background: var(--card-bg);
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+      }
+      .category-title {
+        font-size: 1.4rem;
+        margin-bottom: 25px;
+        color: var(--accent);
+        border-bottom: 1px solid #eee;
+        padding-bottom: 10px;
+      }
+      .menu-item {
+        margin-bottom: 20px;
+      }
+      .item-header {
         display: flex;
         justify-content: space-between;
-        gap: 12px;
-        padding: 8px 0;
-        border-bottom: 1px solid #334155;
-      }
-
-      .menu-list li:last-child {
-        border-bottom: 0;
-      }
-
-      .price {
-        color: #22d3ee;
+        align-items: bottom;
         font-weight: 600;
+        font-size: 1.1rem;
+      }
+      /* L'effet de ligne pointillée automatique entre le plat et le prix */
+      .item-name {
+        position: relative;
+        background: var(--card-bg);
+        padding-right: 10px;
+        z-index: 2;
+      }
+      .item-dots {
+        flex-grow: 1;
+        border-bottom: 2px dotted #dddddd;
+        margin-bottom: 5px;
+        margin-left: 5px;
+        margin-right: 5px;
+      }
+      .item-price {
+        background: var(--card-bg);
+        padding-left: 10px;
+        color: var(--accent);
+        z-index: 2;
+      }
+      .item-description {
+        font-size: 0.9rem;
+        color: var(--text-muted);
+        margin-top: 4px;
+        font-style: italic;
       }
 
+      /* --- FOOTER & CONTACT --- */
       footer {
-        background: #020617;
-        padding: 30px;
+        background-color: #111111;
+        color: #ffffff;
         text-align: center;
+        padding: 60px 20px;
+      }
+      footer h3 {
+        font-family: "Georgia", serif;
+        font-size: 1.8rem;
+        margin-bottom: 20px;
+      }
+      .info-block {
+        margin-bottom: 15px;
+        font-size: 1.05rem;
+        color: #ccc;
+      }
+      .hours {
+        margin-top: 25px;
+        padding-top: 25px;
+        border-top: 1px solid #222;
+        font-size: 0.9rem;
+        color: #999;
       }
     </style>
   </head>
-
   <body>
-    <header>
+    <section class="hero">
       <h1>Chez Marco</h1>
-      <p>Cuisine italienne moderne à Montréal</p>
+      <p>Cuisine italienne moderne au cœur de Montréal</p>
       <a href="#contact" class="btn">Réserver une table</a>
-    </header>
+    </section>
 
-    <section>
-      <h2>Notre menu</h2>
-      <div class="menu">
-        <div class="card">
-          <h3>🍝 Pâtes maison</h3>
-          <ul class="menu-list">
-            <li>
-              <span>Tagliatelles truffe</span><span class="price">22$</span>
-            </li>
-            <li>
-              <span>Rigatoni bolognaise</span><span class="price">19$</span>
-            </li>
-            <li><span>Raviolis ricotta</span><span class="price">20$</span></li>
-          </ul>
+    <main class="container">
+      <h2 class="section-title">Notre Menu</h2>
+
+      <div class="menu-grid">
+        <div class="menu-category">
+          <h3 class="category-title">🍝 Pâtes Fraîches</h3>
+
+          <div class="menu-item">
+            <div class="item-header">
+              <span class="item-name">Tagliatelles Truffe</span>
+              <span class="item-dots"></span>
+              <span class="item-price">22$</span>
+            </div>
+            <div class="item-description">
+              Truffe noire fraîche, parmigiano reggiano, crème légère.
+            </div>
+          </div>
+
+          <div class="menu-item">
+            <div class="item-header">
+              <span class="item-name">Rigatoni Bolognaise</span>
+              <span class="item-dots"></span>
+              <span class="item-price">19$</span>
+            </div>
+            <div class="item-description">
+              Mijoté de bœuf traditionnel pendant 6 heures, sauce tomate maison.
+            </div>
+          </div>
         </div>
-        <div class="card">
-          <h3>🍕 Pizza artisanale</h3>
-          <ul class="menu-list">
-            <li><span>Margherita fumee</span><span class="price">18$</span></li>
-            <li><span>Diavola piccante</span><span class="price">21$</span></li>
-            <li>
-              <span>Prosciutto burrata</span><span class="price">23$</span>
-            </li>
-          </ul>
-        </div>
-        <div class="card">
-          <h3>🍰 Desserts</h3>
-          <ul class="menu-list">
-            <li>
-              <span>Tiramisu classique</span><span class="price">9$</span>
-            </li>
-            <li>
-              <span>Panna cotta vanille</span><span class="price">8$</span>
-            </li>
-            <li><span>Cannoli chocolat</span><span class="price">10$</span></li>
-          </ul>
+
+        <div class="menu-category">
+          <h3 class="category-title">🍕 Pizzas Artisanales</h3>
+
+          <div class="menu-item">
+            <div class="item-header">
+              <span class="item-name">Margherita Fumée</span>
+              <span class="item-dots"></span>
+              <span class="item-price">18$</span>
+            </div>
+            <div class="item-description">
+              Sauce tomate, mozzarella di bufala fumée, basilic frais.
+            </div>
+          </div>
+
+          <div class="menu-item">
+            <div class="item-header">
+              <span class="item-name">Prosciutto Burrata</span>
+              <span class="item-dots"></span>
+              <span class="item-price">23$</span>
+            </div>
+            <div class="item-description">
+              Prosciutto di Parma, burrata entière, roquette et filet d'huile de
+              truffe.
+            </div>
+          </div>
         </div>
       </div>
-    </section>
+    </main>
 
-    <section>
-      <h2>Une expérience unique</h2>
-      <p>Ambiance chaleureuse et cuisine authentique.</p>
-    </section>
+    <footer id="contact">
+      <h3>Une expérience unique</h3>
+      <div class="info-block">📍 123 Rue de la Roche, Montréal, QC</div>
+      <div class="info-block">📞 (514) 555-0199</div>
 
-    <section id="contact">
-      <h2>Contact</h2>
-      <p>📍 Montréal | 📞 514-000-0000</p>
-    </section>
-
-    <footer>
-      <p>© Chez Marco</p>
+      <div class="hours">
+        <p><strong>Heures d'ouverture :</strong></p>
+        <p>Mercredi - Dimanche : 17h00 - 22h00</p>
+        <p>Lundi & Mardi : Fermé</p>
+      </div>
     </footer>
   </body>
 </html>
